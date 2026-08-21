@@ -8,6 +8,15 @@
     <title>GCS-Bridging</title>
 
     <link rel="stylesheet" href="./style.css">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: {'[+]': [['$', '$']]}
+            }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
 </head>
 
 
@@ -22,7 +31,7 @@
         <h1>GCS-Bridging</h1>
 
         <h2>
-            Your Full Paper Title Goes Here
+            GCS-Bridging: Restoring Connectivity of Disconnected Convex Sets for Graph-of-Convex-Sets Motion Planning
         </h2>
 
         <div class="authors">
@@ -40,12 +49,6 @@
                class="button">
                 Code
             </a>
-
-            <a href="#" class="button">Video</a>
-
-            <a href="#results" class="button">
-                Interactive Results
-            </a>
         </div>
 
     </header>
@@ -56,12 +59,12 @@
     <section>
 
         <img
-            src="./assets/images/teaser.png"
+            src="./assets/Figure1_OverviewofGCSBridging.jpg"
             class="main-image"
             alt="GCS-Bridging overview">
 
         <p class="caption">
-            Overview of the proposed GCS-Bridging framework.
+            A conceptual illustration of GCS-Bridging in an abstract configuration space. (a) Initialization is first performed in a fully known environment using multiple IRIS-related algorithms. (b) An offline GCS map is then constructed, in which the regions containing the start and goal configurations may be disconnected. The connected components and the relationships among all regions are subsequently computed from the GCS map. (c) Based on the global connectivity information of the GCS map, the algorithm attempts to locally reconnect the closest regions pair while ensuring that the entire reconnection path remains collision-free. (d) BinaryInflation is then performed along the path; once the two disconnected regions are reconnected, only the shortest connection is retained.
         </p>
 
     </section>
@@ -74,9 +77,7 @@
         <h2>Abstract</h2>
 
         <p>
-            This work presents GCS-Bridging, a motion-planning framework
-            for reconnecting disconnected convex regions in configuration
-            space. The abstract of the paper can be placed here.
+            Graph-of-Convex-Sets (GCS)-based trajectory optimization represents collision-free regions in configuration space as a finite collection of convex sets and directly performs collision-free trajectory planning over these sets, substantially simplifying the planning process. However, existing GCS-based trajectory planning methods generally assume sufficient connectivity among the convex regions and do not explicitly address cases in which the start and goal regions belong to different connected components of the initial GCS map. To address this limitation, we propose GCS-Bridging, which reconnects disconnected convex regions through collision-free point paths followed by convex region reinflation, thereby recovering the feasibility of otherwise disconnected GCS planning problems. Extensive simulations across multiple IRIS-related algorithms and scenarios demonstrate that GCS-Bridging restores missing start-to-goal connectivity in the initial GCS map with a 99.8% success rate. In addition, a hardware experiment on a single-arm Franka platform in a real-world scenario with initially disconnected start and goal regions validates the effectiveness of the proposed method in practical motion planning.
         </p>
 
     </section>
@@ -89,14 +90,12 @@
         <h2>Method</h2>
 
         <img
-            src="./assets/images/method.png"
+            src="./assets/FigureOthers01_AlgorithmPseudoCode.jpg"
             class="main-image"
-            alt="GCS-Bridging method">
+            alt="GCS-Bridging PseudoCode">
 
         <p>
-            The proposed method identifies disconnected components in the
-            graph of convex sets and constructs collision-free bridges
-            between them.
+            The connectivity graph $\boldsymbol{G}$ and connected components information $\boldsymbol{V}$ are first constructed from the initially generated regions set $\boldsymbol{R}$, corresponding to lines 4–5 of Algorithm-1. If $\boldsymbol{V}$ contains only one component, all regions are fully connected and no further bridging is required. Otherwise, the Euclidean distances in C-space between convex regions belonging to different connected components are computed, together with the corresponding closest witness points pair, and the candidate pairs are sorted in ascending order of distance, corresponding to line 9 of Algorithm-1. After sorting, each pair is connected using either $\mathrm{LocalRRTC}$ or $\mathrm{DirectLine}$ followed by $\mathrm{LocalRRTC}$, corresponding to line 11 of Algorithm-1. If a connection is found, $\mathrm{BinaryInflation}$ is applied by selecting points along the path for IRIS inflation and evaluating the connectivity of the resulting regions, corresponding to lines 17–26 of Algorithm-1. If the two points cannot be connected or connected regions cannot be generated, the corresponding pair is recorded in $\mathrm{FailedPairs}$ and excluded from further connection attempts. Finally, the GCS map reconnected by GCS-Bridging is returned.
         </p>
 
     </section>
