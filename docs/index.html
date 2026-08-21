@@ -3,20 +3,201 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>GCS-Bridging</title>
+
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 
 <body>
 
-    <h1>GCS-Bridging</h1>
+<div class="container">
 
-    <p>
-        Project page for GCS-Bridging.
-    </p>
+    <!-- ==================== Title ==================== -->
 
-    <p>
-        Interactive experimental results will be available here.
-    </p>
+    <header class="hero">
+
+        <h1>GCS-Bridging</h1>
+
+        <h2>
+            Your Full Paper Title Goes Here
+        </h2>
+
+        <div class="authors">
+            Xiaokai Zhou · Author 2 · Author 3 · Author 4
+        </div>
+
+        <div class="affiliation">
+            Harbin Institute of Technology
+        </div>
+
+        <div class="links">
+            <a href="#" class="button">Paper</a>
+
+            <a href="https://github.com/zhouxk-shuu/GCS-Bridging"
+               class="button">
+                Code
+            </a>
+
+            <a href="#" class="button">Video</a>
+
+            <a href="#results" class="button">
+                Interactive Results
+            </a>
+        </div>
+
+    </header>
+
+
+    <!-- ==================== Teaser ==================== -->
+
+    <section>
+
+        <img
+            src="./assets/images/teaser.png"
+            class="main-image"
+            alt="GCS-Bridging overview">
+
+        <p class="caption">
+            Overview of the proposed GCS-Bridging framework.
+        </p>
+
+    </section>
+
+
+    <!-- ==================== Abstract ==================== -->
+
+    <section>
+
+        <h2>Abstract</h2>
+
+        <p>
+            This work presents GCS-Bridging, a motion-planning framework
+            for reconnecting disconnected convex regions in configuration
+            space. The abstract of the paper can be placed here.
+        </p>
+
+    </section>
+
+
+    <!-- ==================== Method ==================== -->
+
+    <section>
+
+        <h2>Method</h2>
+
+        <img
+            src="./assets/images/method.png"
+            class="main-image"
+            alt="GCS-Bridging method">
+
+        <p>
+            The proposed method identifies disconnected components in the
+            graph of convex sets and constructs collision-free bridges
+            between them.
+        </p>
+
+    </section>
+
+
+    <!-- ==================== Results ==================== -->
+
+    <section id="results">
+
+        <h2>Interactive Results</h2>
+
+        <p class="section-description">
+            Click each experiment to open the interactive simulation result.
+        </p>
+
+
+        <div class="result-grid">
+
+
+            <!-- Single Arm -->
+
+            <div class="result-card">
+
+                <img
+                    src="./assets/images/single_arm.png"
+                    alt="Single-arm experiment">
+
+                <h3>Single-Arm Planning</h3>
+
+                <p>
+                    Interactive visualization of the single-arm
+                    motion-planning experiments.
+                </p>
+
+                <a
+                    href="./results/single_arm/"
+                    class="button">
+                    View Interactive Result
+                </a>
+
+            </div>
+
+
+            <!-- Dual Arm -->
+
+            <div class="result-card">
+
+                <img
+                    src="./assets/images/dual_arm.png"
+                    alt="Dual-arm experiment">
+
+                <h3>Dual-Arm Planning</h3>
+
+                <p>
+                    Interactive visualization of the dual-arm
+                    motion-planning experiments.
+                </p>
+
+                <a
+                    href="./results/dual_arm/"
+                    class="button">
+                    View Interactive Result
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== Citation ==================== -->
+
+    <section>
+
+        <h2>Citation</h2>
+
+        <pre>
+@article{zhou2026gcsbridging,
+    title   = {GCS-Bridging},
+    author  = {Zhou, Xiaokai and ...},
+    year    = {2026}
+}
+        </pre>
+
+    </section>
+
+
+    <!-- ==================== Footer ==================== -->
+
+    <footer>
+
+        <p>
+            GCS-Bridging Project Page
+        </p>
+
+    </footer>
+
+
+</div>
 
 </body>
 
