@@ -10,7 +10,9 @@ body {
 
 
 .container {
-    max-width: 1000px;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
     margin: 0 auto;
     padding: 30px 25px;
 }
@@ -85,6 +87,17 @@ section {
 }
 
 
+.hero,
+.container > section:not(#experimental-validation),
+footer {
+    width: 100%;
+    max-width: 1000px;
+    box-sizing: border-box;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
 section h2 {
     text-align: center;
     font-size: 30px;
@@ -93,6 +106,9 @@ section h2 {
 
 
 .section-description {
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
     text-align: center;
     color: #555;
 }
@@ -123,7 +139,9 @@ section h2 {
 /* ==================== Experimental Validation ==================== */
 
 .experiment-block {
-    margin-top: 55px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 55px auto 0;
 }
 
 .experiment-title {
@@ -133,20 +151,29 @@ section h2 {
 }
 
 .experiment-text {
-    margin: 20px 0 0;
+    max-width: 1000px;
+    margin: 20px auto 0;
 }
 
 .media-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
-    margin-top: 28px;
+    width: 100%;
+    max-width: 1080px;
+    margin: 28px auto 0;
 }
 
 .media-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 340px;
     min-width: 0;
+    box-sizing: border-box;
+    justify-self: center;
     margin: 0;
-    padding: 12px;
+    padding: 14px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background: #fff;
@@ -154,7 +181,9 @@ section h2 {
 }
 
 .linked-media {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 7px;
 }
 
@@ -178,26 +207,39 @@ section h2 {
 }
 
 .hardware-grid .media-card img {
+    max-width: 310px;
     aspect-ratio: 16 / 10;
     object-fit: contain;
     background: #f5f5f5;
 }
 
 .scenario-grid .media-card img {
-    max-width: 280px;
+    max-width: 300px;
     aspect-ratio: 1 / 1;
-    object-fit: cover;
+    object-fit: contain;
+    background: #f5f5f5;
 }
 
 .media-card figcaption {
-    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.7em;
+    margin-top: 14px;
     font-size: 17px;
     font-weight: 600;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.hardware-grid .media-card figcaption {
+    min-height: auto;
 }
 
 .comparison-table {
     display: block;
     width: 100%;
+    max-width: 1000px;
     height: auto;
     margin: 0 auto;
     border: 1px solid #ddd;
@@ -243,6 +285,7 @@ footer {
 
     .media-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 700px;
     }
 
 }
@@ -259,10 +302,7 @@ footer {
     }
 
     .media-card {
-        width: 100%;
         max-width: 360px;
-        box-sizing: border-box;
-        justify-self: center;
     }
 
 }
