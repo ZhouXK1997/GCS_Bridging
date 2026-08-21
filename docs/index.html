@@ -83,152 +83,216 @@
     </section>
 
 
-    <!-- ==================== Method ==================== -->
+    <!-- ==================== Experimental Validation ==================== -->
 
-    <section>
+    <section id="experimental-validation">
 
-        <h2>Method</h2>
+        <h2>Experimental Validation</h2>
 
-        <img
-            src="./assets/FigureOthers01_AlgorithmPseudoCode.jpg"
-            class="main-image"
-            alt="GCS-Bridging PseudoCode">
+        <!-- Hardware Experiment -->
+        <div class="experiment-block">
 
-        <p>
-            The connectivity graph $\boldsymbol{G}$ and connected components information $\boldsymbol{V}$ are first constructed from the initially generated regions set $\boldsymbol{R}$, corresponding to lines 4–5 of Algorithm-1. If $\boldsymbol{V}$ contains only one component, all regions are fully connected and no further bridging is required. Otherwise, the Euclidean distances in C-space between convex regions belonging to different connected components are computed, together with the corresponding closest witness points pair, and the candidate pairs are sorted in ascending order of distance, corresponding to line 9 of Algorithm-1. After sorting, each pair is connected using either $\mathrm{LocalRRTC}$ or $\mathrm{DirectLine}$ followed by $\mathrm{LocalRRTC}$, corresponding to line 11 of Algorithm-1. If a connection is found, $\mathrm{BinaryInflation}$ is applied by selecting points along the path for IRIS inflation and evaluating the connectivity of the resulting regions, corresponding to lines 17–26 of Algorithm-1. If the two points cannot be connected or connected regions cannot be generated, the corresponding pair is recorded in $\mathrm{FailedPairs}$ and excluded from further connection attempts. Finally, the GCS map reconnected by GCS-Bridging is returned.
-        </p>
+            <h3 class="experiment-title">Hardware Experiment</h3>
+
+            <p class="section-description">
+                Click each result to open the interactive simulation or the full-size hardware recording.
+            </p>
+
+            <div class="media-grid hardware-grid">
+
+                <figure class="media-card">
+                    <a
+                        href="./result/GCS_Bridging_Physical_Experiment_Simulation.html"
+                        class="linked-media"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open the hardware experiment simulation">
+                        <img
+                            src="./assets/FigureOthers04_PhysicalExperimentSimulation.jpg"
+                            alt="Hardware experiment simulation"
+                            loading="lazy">
+                    </a>
+                    <figcaption>Simulation</figcaption>
+                </figure>
+
+                <figure class="media-card">
+                    <a
+                        href="./result/GCS_Bridging_Physical_Experiment_View01.gif"
+                        class="linked-media"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open the first hardware experiment view at full size">
+                        <img
+                            src="./result/GCS_Bridging_Physical_Experiment_View01.gif"
+                            alt="Hardware experiment view 1"
+                            loading="lazy">
+                    </a>
+                    <figcaption>Hardware View 1</figcaption>
+                </figure>
+
+                <figure class="media-card">
+                    <a
+                        href="./result/GCS_Bridging_Physical_Experiment_View02.gif"
+                        class="linked-media"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open the second hardware experiment view at full size">
+                        <img
+                            src="./result/GCS_Bridging_Physical_Experiment_View02.gif"
+                            alt="Hardware experiment view 2"
+                            loading="lazy">
+                    </a>
+                    <figcaption>Hardware View 2</figcaption>
+                </figure>
+
+            </div>
+
+        </div>
+
+        <!-- Multiple IRIS Algorithm Comparison -->
+        <div class="experiment-block">
+
+            <h3 class="experiment-title">Multiple IRIS Algorithm Comparison</h3>
+
+            <img
+                src="./assets/FigureOthers02_Table1Result.jpg"
+                class="comparison-table"
+                alt="Comparison of GCS-Bridging with IRIS-NP, IRIS-NP2, IRIS-ZO, and IRIS-ZO-CUDA"
+                loading="lazy">
+
+            <p class="experiment-text">
+                GCS-Bridging demonstrates strong compatibility with all evaluated IRIS algorithms and successfully connects all start and goal configurations. This performance is primarily attributed to the suitability of RRT-C piecewise-linear paths for IRIS inflation and the ability of local RRT-C to improve overall graph connectivity. Nevertheless, challenges remain. The computational cost of GCS-Bridging strongly depends on the connectivity of the initially generated graph. For IRIS-ZO and IRIS-ZO-CUDA, an excessive number of connected components in the initial GCS map substantially increases both the computational cost of $\mathrm{LocalRRTC}$ and $\mathrm{BinaryInflation}$ and the final optimization cost. This can be attributed to 2 factors. First, the faster IRIS-ZO and IRIS-ZO-CUDA algorithms generate relatively small convex regions. These small regions result in poor connectivity of the initial GCS map, requiring additional regions and producing a more fragmented feasible space. Consequently, the fully connected graph provides less flexibility for convex relaxation, leading to increased GCSTrajOpt cost. Second, because each $\mathrm{BinaryInflation}$ process inflates only 8 regions, unsuccessful connectivity after a single inflation batch requires repeated regions connectivity evaluations. The regions connectivity computation in IRIS involves numerous optimization problems, while each region contains a large number of facets, further increasing the connectivity-checking time, as particularly evident in the IRIS-ZO and IRIS-ZO-CUDA results.
+            </p>
+
+        </div>
+
+        <!-- Multiple Scenarios Comparison -->
+        <div class="experiment-block">
+
+            <h3 class="experiment-title">Multiple Scenarios Comparison</h3>
+
+            <p class="section-description">
+                Click each scenario to open its interactive result. The destination pages are currently placeholders.
+            </p>
+
+            <div class="media-grid scenario-grid">
+
+                <figure class="media-card">
+                    <a
+                        href="./result/Scene01_Cage.html"
+                        class="linked-media"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open the Single-Arm Cage result">
+                        <img
+                            src="./assets/FigureOthers03_Scene01_Cage.jpg"
+                            alt="Single-arm Cage scenario"
+                            loading="lazy">
+                    </a>
+                    <figcaption>Single-Arm Cage</figcaption>
+                </figure>
+
+                <figure class="media-card">
+                    <a
+                        href="./result/Scene02_Box.html"
+                        class="linked-media"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open the Single-Arm Box result">
+                        <img
+                            src="./assets/FigureOthers03_Scene02_Box.jpg"
+                            alt="Single-arm Box scenario"
+                            loading="lazy">
+                    </a>
+                    <figcaption>Single-Arm Box</figcaption>
+                </figure>
+
+                <figure class="media-card">
+                    <a
+                        href="./result/Scene03_TableUnderPick.html"
+                        class="linked-media"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open the Single-Arm Table Under Pick result">
+                        <img
+                            src="./assets/FigureOthers03_Scene03_TableUnderPick.jpg"
+                            alt="Single-arm Table Under Pick scenario"
+                            loading="lazy">
+                    </a>
+                    <figcaption>Single-Arm Table Under Pick</figcaption>
+                </figure>
+
+                <figure class="media-card">
+                    <a
+                        href="./result/Scene04_TablePick.html"
+                        class="linked-media"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open the Single-Arm Table Pick result">
+                        <img
+                            src="./assets/FigureOthers03_Scene04_TablePick.jpg"
+                            alt="Single-arm Table Pick scenario"
+                            loading="lazy">
+                    </a>
+                    <figcaption>Single-Arm Table Pick</figcaption>
+                </figure>
+
+                <figure class="media-card">
+                    <a
+                        href="./result/Scene05_DualIIWA.html"
+                        class="linked-media"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open the Dual-Arm IIWA result">
+                        <img
+                            src="./assets/FigureOthers03_Scene05_DualIIWA.jpg"
+                            alt="Dual-arm IIWA scenario"
+                            loading="lazy">
+                    </a>
+                    <figcaption>Dual-Arm IIWA</figcaption>
+                </figure>
+
+                <figure class="media-card">
+                    <a
+                        href="./result/Scene06_DualFranka.html"
+                        class="linked-media"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open the Dual-Arm Franka result">
+                        <img
+                            src="./assets/FigureOthers03_Scene06_DualFranka.jpg"
+                            alt="Dual-arm Franka scenario"
+                            loading="lazy">
+                    </a>
+                    <figcaption>Dual-Arm Franka</figcaption>
+                </figure>
+
+            </div>
+
+            <img
+                src="./assets/FigureOthers02_Table2Result.jpg"
+                class="comparison-table scenario-table"
+                alt="Comparison of DirectLine, RRT-C, and Hybrid reconnection methods in single-arm and dual-arm scenarios"
+                loading="lazy">
+
+            <p class="experiment-text">
+                Across all scenarios, $\mathrm{DirectLine}$ achieves an overall success rate of 69.2%, compared with 99.8% for pure RRT-C and 100% for the hybrid strategy. Specifically, the Table above shows that DirectLine achieves acceptable success rates in low-dimensional scenarios but degrades in geometrically complex or high-dimensional environments, such as Cage and the dual-arm scenarios. In contrast, RRT-C-based GCS-Bridging and the hybrid strategy achieve consistently higher success rates due to the effectiveness of RRT-C in high-dimensional C-space. Their overall performance is comparable in both success rate and computation time, while the shorter runtime of pure RRT-C in some single-arm cases is primarily attributed to GPU acceleration. The hybrid strategy is therefore retained as a practical CPU-based option for low-dimensional scenarios. The substantially higher computation time observed for Dual Panda is mainly caused by its more complex collision model, which uses 66 spheres, compared with only 13 spheres for the simplified KUKA iiwa model.
+            </p>
+
+        </div>
 
     </section>
 
 
-    <!-- ==================== Results ==================== -->
+    <!-- ==================== Conclusion ==================== -->
 
-    <section id="results">
+    <section id="conclusion">
 
-        <h2>Results</h2>
+        <h2>Conclusion</h2>
 
-        <p class="section-description">
-            Click each experiment to open the interactive simulation result.
+        <p>
+            Conclusion text placeholder. Summarize the main findings, experimental observations, limitations, and potential directions for future work here.
         </p>
-
-
-        <div class="result-grid">
-
-            <!-- Single Arm: Scene 01 -->
-            <div class="result-card">
-                <a href="./result/Scene01_Cage.html"
-                aria-label="Open Single-Arm Cage result">
-                    <img
-                        src="./assets/FigureOthers03_Scene01_Cage.jpg"
-                        alt="Single-arm Cage result">
-                </a>
-                <h3>Single-Arm Cage</h3>
-            </div>
-
-            <!-- Single Arm: Scene 02 -->
-            <div class="result-card">
-                <a href="./result/Scene02_Box.html"
-                aria-label="Open Single-Arm Box result">
-                    <img
-                        src="./assets/FigureOthers03_Scene02_Box.jpg"
-                        alt="Single-arm Box result">
-                </a>
-                <h3>Single-Arm Box</h3>
-            </div>
-
-            <!-- Single Arm: Scene 03 -->
-            <div class="result-card">
-                <a href="./result/Scene03_TableUnderPick.html"
-                aria-label="Open Single-Arm Table Under Pick result">
-                    <img
-                        src="./assets/FigureOthers03_Scene03_TableUnderPick.jpg"
-                        alt="Single-arm Table Under Pick result">
-                </a>
-                <h3>Single-Arm Table Under Pick</h3>
-            </div>
-
-            <!-- Single Arm: Scene 04 -->
-            <div class="result-card">
-                <a href="./result/Scene04_TablePick.html"
-                aria-label="Open Single-Arm Table Pick result">
-                    <img
-                        src="./assets/FigureOthers03_Scene04_TablePick.jpg"
-                        alt="Single-arm Table Pick result">
-                </a>
-                <h3>Single-Arm Table Pick</h3>
-            </div>
-
-            <!-- Dual Arm: Scene 05 -->
-            <div class="result-card">
-                <a href="./result/Scene05_DualIIWA.html"
-                aria-label="Open Dual-Arm IIWA result">
-                    <img
-                        src="./assets/FigureOthers03_Scene05_DualIIWA.jpg"
-                        alt="Dual-arm IIWA result">
-                </a>
-                <h3>Dual-Arm IIWA</h3>
-            </div>
-
-            <!-- Dual Arm: Scene 06 -->
-            <div class="result-card">
-                <a href="./result/Scene06_DualFranka.html"
-                aria-label="Open Dual-Arm Franka result">
-                    <img
-                        src="./assets/FigureOthers03_Scene06_DualFranka.jpg"
-                        alt="Dual-arm Franka result">
-                </a>
-                <h3>Dual-Arm Franka</h3>
-            </div>
-
-        </div>
-
-        <div class="comparison-results">
-
-            <h3 class="comparison-heading">Quantitative Comparisons</h3>
-
-            <figure class="comparison-result">
-                <h4>Multiple IRIS Algorithm Comparison</h4>
-
-                <a
-                    href="./assets/FigureOthers02_Table1Result.jpg"
-                    class="comparison-table-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open the region-generator comparison table at full size">
-                    <img
-                        src="./assets/FigureOthers02_Table1Result.jpg"
-                        class="comparison-table"
-                        alt="Comparison of GCS-Bridging with IRIS-NP, IRIS-NP2, IRIS-ZO, and IRIS-ZO-CUDA"
-                        loading="lazy">
-                </a>
-
-                <p>
-                    GCS-Bridging demonstrates strong compatibility with all evaluated IRIS algorithms and successfully connects all start and goal configurations. This performance is primarily attributed to the suitability of RRT-C piecewise-linear paths for IRIS inflation and the ability of local RRT-C to improve overall graph connectivity. Nevertheless, challenges remain. The computational cost of GCS-Bridging strongly depends on the connectivity of the initially generated graph. For IRIS-ZO and IRIS-ZO-CUDA, an excessive number of connected components in the initial GCS map substantially increases both the computational cost of $\mathrm{LocalRRTC}$ and $\mathrm{BinaryInflation}$ and the final optimization cost. This can be attributed to 2 factors. First, the faster IRIS-ZO and IRIS-ZO-CUDA algorithms generate relatively small convex regions. These small regions result in poor connectivity of the initial GCS map, requiring additional regions and producing a more fragmented feasible space. Consequently, the fully connected graph provides less flexibility for convex relaxation, leading to increased GCSTrajOpt cost. Second, because each $\mathrm{BinaryInflation}$ process inflates only 8 regions, unsuccessful connectivity after a single inflation batch requires repeated regions connectivity evaluations. The regions connectivity computation in IRIS involves numerous optimization problems, while each region contains a large number of facets, further increasing the connectivity-checking time, as particularly evident in the IRIS-ZO and IRIS-ZO-CUDA results.
-                </p>
-            </figure>
-
-            <figure class="comparison-result">
-                <h4>Multiple Scenarios Comparison</h4>
-
-                <a
-                    href="./assets/FigureOthers02_Table2Result.jpg"
-                    class="comparison-table-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open the reconnection-method comparison table at full size">
-                    <img
-                        src="./assets/FigureOthers02_Table2Result.jpg"
-                        class="comparison-table"
-                        alt="Comparison of DirectLine, RRT-C, and Hybrid reconnection methods in single-arm and dual-arm scenarios"
-                        loading="lazy">
-                </a>
-
-                <p>
-                    Across all scenarios, $\mathrm{DirectLine}$ achieves an overall success rate of 69.2%, compared with 99.8% for pure RRT-C and 100% for the hybrid strategy. Specifically, the Table above shows that DirectLine achieves acceptable success rates in low-dimensional scenarios but degrades in geometrically complex or high-dimensional environments, such as Cage and the dual-arm scenarios. In contrast, RRT-C-based GCS-Bridging and the hybrid strategy achieve consistently higher success rates due to the effectiveness of RRT-C in high-dimensional C-space. Their overall performance is comparable in both success rate and computation time, while the shorter runtime of pure RRT-C in some single-arm cases is primarily attributed to GPU acceleration. The hybrid strategy is therefore retained as a practical CPU-based option for low-dimensional scenarios. The substantially higher computation time observed for Dual Panda is mainly caused by its more complex collision model, which uses 66 spheres, compared with only 13 spheres for the simplified KUKA iiwa model.
-                </p>
-            </figure>
-
-        </div>
 
     </section>
 
