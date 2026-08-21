@@ -187,7 +187,7 @@
             <h3 class="comparison-heading">Quantitative Comparisons</h3>
 
             <figure class="comparison-result">
-                <h4>Comparison Across Region Generators</h4>
+                <h4>Comparison Across 4 Different IRIS Algorithms</h4>
 
                 <a
                     href="./assets/FigureOthers02_Table1Result.jpg"
@@ -203,12 +203,12 @@
                 </a>
 
                 <figcaption>
-                    GCS-Bridging reconnects the initial GCS maps produced by all four region generators into a single connected component. IRIS-ZO-CUDA provides the shortest region-inflation time, while IRIS-NP2 achieves the lowest total bridging time and the lowest GCS trajectory-optimization cost. Click the table to view it at full size.
+                    GCS-Bridging demonstrates strong compatibility with all evaluated IRIS algorithms and successfully connects all start and goal configurations. This performance is primarily attributed to the suitability of RRT-C piecewise-linear paths for IRIS inflation and the ability of local RRT-C to improve overall graph connectivity. Nevertheless, challenges remain. The computational cost of GCS-Bridging strongly depends on the connectivity of the initially generated graph. For IRIS-ZO and IRIS-ZO-CUDA, an excessive number of connected components in the initial GCS map substantially increases both the computational cost of $\mathrm{LocalRRTC}$ and $\mathrm{BinaryInflation}$ and the final optimization cost. This can be attributed to 2 factors. First, the faster IRIS-ZO and IRIS-ZO-CUDA algorithms generate relatively small convex regions. These small regions result in poor connectivity of the initial GCS map, requiring additional regions and producing a more fragmented feasible space. Consequently, the fully connected graph provides less flexibility for convex relaxation, leading to increased GCSTrajOpt cost. Second, because each $\mathrm{BinaryInflation}$ process inflates only 8 regions, unsuccessful connectivity after a single inflation batch requires repeated regions connectivity evaluations. The regions connectivity computation in IRIS involves numerous optimization problems, while each region contains a large number of facets, further increasing the connectivity-checking time, as particularly evident in the IRIS-ZO and IRIS-ZO-CUDA results.
                 </figcaption>
             </figure>
 
             <figure class="comparison-result">
-                <h4>Comparison Across Reconnection Methods</h4>
+                <h4>Comparison Across Different Random Scenarios</h4>
 
                 <a
                     href="./assets/FigureOthers02_Table2Result.jpg"
@@ -224,7 +224,7 @@
                 </a>
 
                 <figcaption>
-                    DirectLine is efficient when a direct collision-free connection exists, but its success rate decreases in more constrained scenes. RRT-C and the hybrid method provide substantially more reliable reconnection; the hybrid method succeeds in every reported single-arm and dual-arm trial, with increased reconnection time in the challenging dual-arm scenes. Click the table to view it at full size.
+                    Across all scenarios, $\mathrm{DirectLine}$ achieves an overall success rate of 69.2%, compared with 99.8% for pure RRT-C and 100% for the hybrid strategy. Specifically, the Table above shows that DirectLine achieves acceptable success rates in low-dimensional scenarios but degrades in geometrically complex or high-dimensional environments, such as Cage and the dual-arm scenarios. In contrast, RRT-C-based GCS-Bridging and the hybrid strategy achieve consistently higher success rates due to the effectiveness of RRT-C in high-dimensional C-space. Their overall performance is comparable in both success rate and computation time, while the shorter runtime of pure RRT-C in some single-arm cases is primarily attributed to GPU acceleration. The hybrid strategy is therefore retained as a practical CPU-based option for low-dimensional scenarios. The substantially higher computation time observed for Dual Panda is mainly caused by its more complex collision model, which uses 66 spheres, compared with only 13 spheres for the simplified KUKA iiwa model.
                 </figcaption>
             </figure>
 
