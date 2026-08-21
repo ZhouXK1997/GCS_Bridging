@@ -182,6 +182,54 @@
 
         </div>
 
+        <div class="comparison-results">
+
+            <h3 class="comparison-heading">Quantitative Comparisons</h3>
+
+            <figure class="comparison-result">
+                <h4>Comparison Across Region Generators</h4>
+
+                <a
+                    href="./assets/FigureOthers02_Table1Result.jpg"
+                    class="comparison-table-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open the region-generator comparison table at full size">
+                    <img
+                        src="./assets/FigureOthers02_Table1Result.jpg"
+                        class="comparison-table"
+                        alt="Comparison of GCS-Bridging with IRIS-NP, IRIS-NP2, IRIS-ZO, and IRIS-ZO-CUDA"
+                        loading="lazy">
+                </a>
+
+                <figcaption>
+                    GCS-Bridging reconnects the initial GCS maps produced by all four region generators into a single connected component. IRIS-ZO-CUDA provides the shortest region-inflation time, while IRIS-NP2 achieves the lowest total bridging time and the lowest GCS trajectory-optimization cost. Click the table to view it at full size.
+                </figcaption>
+            </figure>
+
+            <figure class="comparison-result">
+                <h4>Comparison Across Reconnection Methods</h4>
+
+                <a
+                    href="./assets/FigureOthers02_Table2Result.jpg"
+                    class="comparison-table-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open the reconnection-method comparison table at full size">
+                    <img
+                        src="./assets/FigureOthers02_Table2Result.jpg"
+                        class="comparison-table"
+                        alt="Comparison of DirectLine, RRT-C, and Hybrid reconnection methods in single-arm and dual-arm scenarios"
+                        loading="lazy">
+                </a>
+
+                <figcaption>
+                    DirectLine is efficient when a direct collision-free connection exists, but its success rate decreases in more constrained scenes. RRT-C and the hybrid method provide substantially more reliable reconnection; the hybrid method succeeds in every reported single-arm and dual-arm trial, with increased reconnection time in the challenging dual-arm scenes. Click the table to view it at full size.
+                </figcaption>
+            </figure>
+
+        </div>
+
     </section>
 
 
